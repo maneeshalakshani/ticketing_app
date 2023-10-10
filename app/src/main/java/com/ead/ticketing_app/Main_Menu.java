@@ -21,7 +21,7 @@ public class Main_Menu extends AppCompatActivity {
         ticketBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(Main_Menu.this, Reservation.class));
+                startActivity(new Intent(Main_Menu.this, Add_Reservation.class));
             }
         });
 

@@ -22,14 +22,28 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
+        android:id="@+id/info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="Class 1 : LRK 1000 per ticket\nClass 2 : LRK 600 per ticket\nClass 3 : LRK 300 per ticket"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:textAlignment="center"
+        android:textSize="18sp"
+        android:lineHeight="28sp"
+        android:textColor="#7C7C7C"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView5" />
+
+    <TextView
         android:id="@+id/num"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="84dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="35dp"
         android:text="Reservation Number"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView5" />
+        app:layout_constraintTop_toBottomOf="@+id/info" />
 
     <TextView
         android:id="@+id/num_val"
@@ -43,7 +57,7 @@
         app:layout_constraintTop_toTopOf="@+id/num" />
 
     <TextView
-        android:id="@+id/price"
+        android:id="@+id/total"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
@@ -59,8 +73,8 @@
         android:width="100sp"
         android:background="@android:color/white"
         android:text="LRK 1000"
-        app:layout_constraintStart_toEndOf="@+id/price"
-        app:layout_constraintTop_toTopOf="@+id/price" />
+        app:layout_constraintStart_toEndOf="@+id/total"
+        app:layout_constraintTop_toTopOf="@+id/total" />
 
     <TextView
         android:id="@+id/duration"
@@ -68,8 +82,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:text="Duration"
-        app:layout_constraintStart_toStartOf="@+id/price"
-        app:layout_constraintTop_toBottomOf="@+id/price" />
+        app:layout_constraintStart_toStartOf="@+id/total"
+        app:layout_constraintTop_toBottomOf="@+id/total" />
 
     <TextView
         android:id="@+id/duration_val"
@@ -84,53 +98,53 @@
         app:layout_constraintTop_toTopOf="@+id/duration" />
 
     <TextView
-        android:id="@+id/StartsAt"
+        android:id="@+id/date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
-        android:text="Starts From"
+        android:text="Date"
         app:layout_constraintStart_toStartOf="@+id/duration"
         app:layout_constraintTop_toBottomOf="@+id/duration" />
 
     <TextView
-        android:id="@+id/StartsAt_val"
+        android:id="@+id/date_val"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="96dp"
+        android:layout_marginStart="140dp"
         android:width="100sp"
         android:background="@android:color/white"
         android:text="5th Aug 2023"
-        app:layout_constraintStart_toEndOf="@+id/StartsAt"
-        app:layout_constraintTop_toTopOf="@+id/StartsAt" />
+        app:layout_constraintStart_toEndOf="@+id/date"
+        app:layout_constraintTop_toTopOf="@+id/date" />
 
     <TextView
-        android:id="@+id/endAt"
+        android:id="@+id/trainClass"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:text="Ends At"
-        app:layout_constraintStart_toStartOf="@+id/StartsAt"
-        app:layout_constraintTop_toBottomOf="@+id/StartsAt" />
+        android:text="Train Class"
+        app:layout_constraintStart_toStartOf="@+id/date"
+        app:layout_constraintTop_toBottomOf="@+id/date" />
 
     <TextView
-        android:id="@+id/endAt_val"
+        android:id="@+id/trainClass_val"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="124dp"
-        android:text="17th Aug 2023"
+        android:layout_marginStart="100dp"
         android:width="100sp"
         android:background="@android:color/white"
-        app:layout_constraintStart_toEndOf="@+id/endAt"
-        app:layout_constraintTop_toTopOf="@+id/endAt" />
+        android:text="Class 1"
+        app:layout_constraintStart_toEndOf="@+id/trainClass"
+        app:layout_constraintTop_toTopOf="@+id/trainClass" />
 
     <Button
         android:id="@+id/confirmBtn"
-        android:layout_width="wrap_content"
+        android:layout_width="250sp"
         android:layout_height="wrap_content"
         android:layout_marginTop="76dp"
         android:lineHeight="20sp"
-        android:text="Confirm Your\nReservation"
+        android:text="Confirm Your Reservation"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/endAt" />
+        app:layout_constraintTop_toBottomOf="@+id/trainClass" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -8,7 +8,7 @@
     tools:context=".Add_Reservation">
 
     <TextView
-        android:id="@+id/textView9"
+        android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="52dp"
@@ -19,27 +19,65 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/startDate"
+    <TextView
+        android:id="@+id/selectedDateTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Selected Date: "
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/title"
+        app:layout_constraintTop_toBottomOf="@+id/title"/>
+
+    <Button
+        android:id="@+id/selectDateButton"
         android:layout_width="300sp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:ems="10"
-        android:hint="Enter Start Date"
-        android:inputType="date"
-        app:layout_constraintStart_toStartOf="@+id/textView9"
-        app:layout_constraintTop_toBottomOf="@+id/textView9" />
+        android:layout_marginTop="12dp"
+        android:text="Pick reservation date"
+        app:layout_constraintStart_toStartOf="@+id/selectedDateTextView"
+        app:layout_constraintTop_toBottomOf="@+id/selectedDateTextView" />
+
+<!--    <EditText-->
+<!--        android:id="@+id/startDate"-->
+<!--        android:layout_width="300sp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="32dp"-->
+<!--        android:ems="10"-->
+<!--        android:hint="Enter Start Date"-->
+<!--        android:inputType="date"-->
+<!--        app:layout_constraintStart_toStartOf="@+id/selectDateButton"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/selectDateButton" />-->
+
+<!--    <EditText-->
+<!--        android:id="@+id/endDate"-->
+<!--        android:layout_width="300sp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="32dp"-->
+<!--        android:ems="10"-->
+<!--        android:hint="Enter End Date"-->
+<!--        android:inputType="date"-->
+<!--        app:layout_constraintStart_toStartOf="@+id/startDate"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/startDate" />-->
 
     <EditText
-        android:id="@+id/endDate"
+        android:id="@+id/noOfTickets"
         android:layout_width="300sp"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:ems="10"
-        android:hint="Enter End Date"
-        android:inputType="date"
-        app:layout_constraintStart_toStartOf="@+id/startDate"
-        app:layout_constraintTop_toBottomOf="@+id/startDate" />
+        android:hint="Enter No of tickets"
+        android:inputType="text"
+        app:layout_constraintStart_toStartOf="@+id/selectDateButton"
+        app:layout_constraintTop_toBottomOf="@+id/selectDateButton" />
+
+    <Spinner
+        android:id="@+id/trainClass"
+        android:layout_width="300sp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        app:layout_constraintStart_toStartOf="@+id/noOfTickets"
+        app:layout_constraintTop_toBottomOf="@+id/noOfTickets" />
 
     <Button
         android:id="@+id/setBtn"
@@ -48,8 +86,8 @@
         android:layout_marginStart="76dp"
         android:layout_marginTop="40dp"
         android:text="Set Reservation"
-        app:layout_constraintStart_toStartOf="@+id/endDate"
-        app:layout_constraintTop_toBottomOf="@+id/endDate" />
+        app:layout_constraintStart_toStartOf="@+id/trainClass"
+        app:layout_constraintTop_toBottomOf="@+id/trainClass" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
