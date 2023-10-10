@@ -1,7 +1,9 @@
 package com.ead.ticketing_app;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -12,12 +14,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.textfield.TextInputEditText;
 
 public class MainActivity extends AppCompatActivity {
+    private static final String TAG = "MyApp";
+    String dbNIC;
+    String dbPASSWORD;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        TextInputEditText username = (TextInputEditText) findViewById(R.id.usernameval);
+        TextInputEditText nic = (TextInputEditText) findViewById(R.id.usernameval);
         TextInputEditText password = (TextInputEditText) findViewById(R.id.passwordval);
         TextView registerLink = (TextView) findViewById(R.id.registerLink);
 
@@ -27,7 +32,21 @@ public class MainActivity extends AppCompatActivity {
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(username.getText().toString().equals("admin") && password.getText().toString().equals("admin")){
+                MyDBHelper dbHelper = new MyDBHelper(MainActivity.this);
+                Cursor cursor = dbHelper.searchForUser(nic.getText().toString());
+                if (cursor != null && cursor.moveToFirst()) {
+                    do {
+                        dbNIC = cursor.getString(2);
+                        dbPASSWORD = cursor.getString(4);
+
+                        // Append the cursor details to the TextView
+                        Log.d(TAG, "Result: " + dbNIC);
+
+                    } while (cursor.moveToNext());
+                    cursor.close();
+                }
+
+                if(nic.getText().toString().equals(dbNIC) && password.getText().toString().equals(dbPASSWORD)){
                     //correct
                     Toast.makeText(MainActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(MainActivity.this, Main_Menu.class));
