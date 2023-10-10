@@ -11,6 +11,7 @@ import androidx.annotation.Nullable;
 
 public class MyDBHelper extends SQLiteOpenHelper {
 
+    //defining db related variables
     private Context context;
     private static final String DATABASE_NAME = "ReservationLibrary.db";
     private static final int DATABASE_VERSION = 1;
@@ -23,11 +24,13 @@ public class MyDBHelper extends SQLiteOpenHelper {
     private static final String COLUMN_PASSWORD = "password";
     private static final String COLUMN_STATUS = "status";
 
+    //constructor
     public MyDBHelper(@Nullable Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
         this.context = context;
     }
 
+    //onCreate method for creating table
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         String query = "CREATE TABLE " + TABLE_NAME + " (" + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
@@ -40,6 +43,7 @@ public class MyDBHelper extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL(query);
     }
 
+    //onUpgrade method for updating table
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
@@ -79,7 +83,7 @@ public class MyDBHelper extends SQLiteOpenHelper {
         return cursor;
     }
 
-
+    //search user by nic
     public Cursor searchForUser(String nic){
         SQLiteDatabase db = this.getReadableDatabase();
         String query = "SELECT * FROM " +TABLE_NAME+ " WHERE " +COLUMN_NIC+ " = " +nic+ ";";

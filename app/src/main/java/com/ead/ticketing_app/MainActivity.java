@@ -14,6 +14,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.textfield.TextInputEditText;
 
 public class MainActivity extends AppCompatActivity {
+
+    //defining variables
     private static final String TAG = "MyApp";
     String dbNIC;
     String dbPASSWORD;
@@ -22,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //find by ids
         TextInputEditText nic = (TextInputEditText) findViewById(R.id.usernameval);
         TextInputEditText password = (TextInputEditText) findViewById(R.id.passwordval);
         TextView registerLink = (TextView) findViewById(R.id.registerLink);
@@ -46,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
                     cursor.close();
                 }
 
+                //checking and matching password and nic
                 if(nic.getText().toString().equals(dbNIC) && password.getText().toString().equals(dbPASSWORD)){
                     //correct
                     Toast.makeText(MainActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
@@ -60,6 +64,7 @@ public class MainActivity extends AppCompatActivity {
         registerLink.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //navigation
                 startActivity(new Intent(MainActivity.this, Register.class));
             }
         });

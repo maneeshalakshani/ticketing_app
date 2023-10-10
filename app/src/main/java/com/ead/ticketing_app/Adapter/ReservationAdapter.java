@@ -17,6 +17,7 @@ public class ReservationAdapter extends RecyclerView.Adapter<ReservationAdapter.
     private Context context;
     private ArrayList item_name, item_id, price_per_day, no_of_days, status;
 
+    //ReservationAdapter constructor
     public ReservationAdapter(Context context,
                        ArrayList item_id,
                        ArrayList item_name,
@@ -39,6 +40,7 @@ public class ReservationAdapter extends RecyclerView.Adapter<ReservationAdapter.
         return new MyViewHolder(view);
     }
 
+    //binding to the viewHolder
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         holder.item_id_txt.setText(String.valueOf(item_id.get(position)));
@@ -48,11 +50,13 @@ public class ReservationAdapter extends RecyclerView.Adapter<ReservationAdapter.
         holder.status_txt.setText(String.valueOf(status.get(position)));
     }
 
+    //getting fetched item count
     @Override
     public int getItemCount() {
         return item_id.size();
     }
 
+    //MyViewHolder
     public class MyViewHolder extends RecyclerView.ViewHolder {
         TextView item_name_txt, item_id_txt, price_per_day_txt, no_of_days_txt, status_txt;
         public MyViewHolder(@NonNull View itemView) {
