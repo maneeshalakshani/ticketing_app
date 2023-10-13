@@ -17,7 +17,6 @@ import java.io.IOException;
 
 import okhttp3.Call;
 import okhttp3.Callback;
-import okhttp3.FormBody;
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -28,12 +27,8 @@ public class Summary extends AppCompatActivity {
 
     OkHttpClient okHttpClient;
     String postURL = "https://10.0.2.2:7104/api/Booking/addBooking";
-    String getURL = "https://10.0.2.2:7104/api/Booking";
-    TextView num_val;
-    TextView duration_val;
-    TextView date_val;
-    TextView trainClass_val;
-    TextView total_val;
+//    String getURL = "https://10.0.2.2:7104/api/Booking";
+    TextView num_val, duration_val, date_val, trainClass_val, total_val, noOfTickets_val, startFrom_val, endFrom_val;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +41,10 @@ public class Summary extends AppCompatActivity {
         date_val = (TextView) findViewById(R.id.date_val);
         trainClass_val = (TextView) findViewById(R.id.trainClass_val);
         total_val = (TextView) findViewById(R.id.price_val);
+        noOfTickets_val = (TextView) findViewById(R.id.noOfTickets_val);
+        startFrom_val = (TextView) findViewById(R.id.startFrom_val);
+        endFrom_val = (TextView) findViewById(R.id.endFrom_val);
+
         Services services = new Services();
         okHttpClient = services.createCustomOkHttpClient();
 
@@ -53,6 +52,8 @@ public class Summary extends AppCompatActivity {
         String date = intent.getStringExtra("date");
         String trainClass = intent.getStringExtra("trainClass");
         String noOfTickets = intent.getStringExtra("noOfTickets");
+        String startFrom = intent.getStringExtra("startFrom");
+        String endFrom = intent.getStringExtra("endFrom");
 
         if (date != null && trainClass != null && noOfTickets != null) {
             num_val.setText(String.valueOf(300));
@@ -60,6 +61,9 @@ public class Summary extends AppCompatActivity {
             date_val.setText(date.split(": ")[1]);
             trainClass_val.setText(trainClass);
             total_val.setText("LRK " + calculateTotal(trainClass, Integer.parseInt(noOfTickets)));
+            noOfTickets_val.setText(noOfTickets);
+            startFrom_val.setText(startFrom);
+            endFrom_val.setText(endFrom);
         }else{
             Log.d("TEST>>>>", "Something is empty");
         }
@@ -69,14 +73,8 @@ public class Summary extends AppCompatActivity {
         confirmBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Services service = new Services();
-
                 //add Data
-//                post();
                 post();
-
-                Toast.makeText(Summary.this, "Successfully Confirmed!", Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(Summary.this, Main_Menu.class));
             }
         });
     }
@@ -94,31 +92,31 @@ public class Summary extends AppCompatActivity {
         return String.valueOf(paymentPerDay * noOfDays);
     }
 
-    public void get(){
-        Request request = new Request.Builder().url(getURL).build();
-        okHttpClient.newCall(request).enqueue(new Callback() {
-            @Override
-            public void onFailure(@NonNull Call call, @NonNull IOException e) {
-                e.printStackTrace();
-            }
-
-            @Override
-            public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        try {
-                            String data = response.body().string();
-                            num_val.setText(data);
-                            Log.d("SUMMARY", "Result: " + data);
-                        } catch (IOException e) {
-                            throw new RuntimeException(e);
-                        }
-                    }
-                });
-            }
-        });
-    }
+//    public void get(){
+//        Request request = new Request.Builder().url(getURL).build();
+//        okHttpClient.newCall(request).enqueue(new Callback() {
+//            @Override
+//            public void onFailure(@NonNull Call call, @NonNull IOException e) {
+//                e.printStackTrace();
+//            }
+//
+//            @Override
+//            public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
+//                runOnUiThread(new Runnable() {
+//                    @Override
+//                    public void run() {
+//                        try {
+//                            String data = response.body().string();
+//                            num_val.setText(data);
+//                            Log.d("SUMMARY", "Result: " + data);
+//                        } catch (IOException e) {
+//                            throw new RuntimeException(e);
+//                        }
+//                    }
+//                });
+//            }
+//        });
+//    }
 
 //    public void post(){
 //        RequestBody requestBody = new FormBody.Builder()
@@ -153,11 +151,11 @@ public class Summary extends AppCompatActivity {
 
     public void post() {
         MediaType JSON = MediaType.parse("application/json; charset=utf-8");
-        String json = "{\"fromStation\": \"Colombo\", " +
-                "\"toStation\": \"Matara\", " +
-                "\"journeyDate\": \"20/10/2023\", " +
-                "\"noOfTickets\": \"2\", " +
-                "\"ticketclass\": \"class 2\"}";
+        String json = "{\"fromStation\": \"" +startFrom_val.getText().toString()+ "\", " +
+                "\"toStation\": \"" +endFrom_val.getText().toString()+ "\", " +
+                "\"journeyDate\": \"" +date_val.getText().toString()+ "\", " +
+                "\"noOfTickets\": \"" +noOfTickets_val.getText().toString()+ "\", " +
+                "\"ticketclass\": \"" +trainClass_val.getText().toString()+ "\"}";
 
         RequestBody requestBody = RequestBody.create(json, JSON);
 
@@ -181,8 +179,11 @@ public class Summary extends AppCompatActivity {
                     public void run() {
                         try {
                             String responseBody = response.body().string();
-                            num_val.setText(responseBody);
+//                            num_val.setText(responseBody);
+                            Toast.makeText(Summary.this, "Successfully Confirmed!", Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(Summary.this, Main_Menu.class));
                         } catch (IOException e) {
+                            Toast.makeText(Summary.this, "Error occurred in Confirmation!", Toast.LENGTH_SHORT).show();
                             throw new RuntimeException(e);
                         }
                     }

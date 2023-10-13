@@ -137,14 +137,75 @@
         app:layout_constraintStart_toEndOf="@+id/trainClass"
         app:layout_constraintTop_toTopOf="@+id/trainClass" />
 
+    <TextView
+        android:id="@+id/noOfTickets"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="No Of Tickets"
+        app:layout_constraintStart_toStartOf="@+id/trainClass"
+        app:layout_constraintTop_toBottomOf="@+id/trainClass" />
+
+    <TextView
+        android:id="@+id/noOfTickets_val"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="84dp"
+        android:width="100sp"
+        android:background="@android:color/white"
+        android:text="0"
+        app:layout_constraintStart_toEndOf="@+id/noOfTickets"
+        app:layout_constraintTop_toTopOf="@+id/noOfTickets" />
+
+    <TextView
+        android:id="@+id/startFrom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="Journey Start From"
+        app:layout_constraintStart_toStartOf="@+id/noOfTickets"
+        app:layout_constraintTop_toBottomOf="@+id/noOfTickets" />
+
+    <TextView
+        android:id="@+id/startFrom_val"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="48dp"
+        android:width="100sp"
+        android:background="@android:color/white"
+        android:text="Colombo"
+        app:layout_constraintStart_toEndOf="@+id/startFrom"
+        app:layout_constraintTop_toTopOf="@+id/startFrom" />
+
+    <TextView
+        android:id="@+id/endFrom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="Journey End From"
+        app:layout_constraintStart_toStartOf="@+id/startFrom"
+        app:layout_constraintTop_toBottomOf="@+id/startFrom" />
+
+    <TextView
+        android:id="@+id/endFrom_val"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="56dp"
+        android:width="100sp"
+        android:background="@android:color/white"
+        android:text="Colombo"
+        app:layout_constraintStart_toEndOf="@+id/endFrom"
+        app:layout_constraintTop_toTopOf="@+id/endFrom" />
+
     <Button
         android:id="@+id/confirmBtn"
         android:layout_width="250sp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="76dp"
+        android:layout_marginTop="48dp"
         android:lineHeight="20sp"
         android:text="Confirm Your Reservation"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/trainClass" />
+        app:layout_constraintTop_toBottomOf="@+id/endFrom" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="50dp"
+    android:layout_marginTop="10dp">
+
+    <TextView
+        android:id="@+id/startFrom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:text="Colombo"/>
+
+    <TextView
+        android:id="@+id/endFrom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:text="Matara"
+        android:textSize="20sp"
+        android:layout_below="@id/startFrom" />
+
+    <TextView
+        android:id="@+id/noOfTickets"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:text="12"
+        android:textSize="20sp"
+        android:layout_below="@id/endFrom" />
+
+    <TextView
+        android:id="@+id/trainClass"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:text="Class 1"
+        android:textSize="20sp"
+        android:layout_below="@id/noOfTickets" />
+
+    <TextView
+        android:id="@+id/date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:text="1000"
+        android:textSize="20sp"
+        android:layout_below="@id/trainClass"/>
+
+    <TextView
+        android:id="@+id/price"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:text="1000"
+        android:textSize="20sp"
+        android:layout_below="@id/date" />
+
+    <TextView
+        android:id="@+id/updateButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Update"
+        android:layout_below="@id/price"
+        android:textColor="#25680D"
+        android:textSize="20sp"
+        android:clickable="true"
+        android:layout_toStartOf="@id/deleteButton" />
+
+    <TextView
+        android:id="@+id/deleteButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/price"
+        android:layout_alignParentEnd="true"
+        android:layout_marginLeft="20sp"
+        android:textColor="#9A0909"
+        android:textSize="20sp"
+        android:clickable="true"
+        android:hapticFeedbackEnabled="false"
+        android:text="Delete" />
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="#B3B3B3"
+        android:layout_marginTop="10dp"
+        android:layout_below="@id/deleteButton" />
+
+</RelativeLayout>

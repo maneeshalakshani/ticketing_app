@@ -25,7 +25,7 @@ public class Add_Reservation extends AppCompatActivity {
     private String selectedClass;
     private int year, month, day;
 
-    private EditText noOfTickets;
+    private EditText noOfTickets, startFrom, endFrom;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +37,8 @@ public class Add_Reservation extends AppCompatActivity {
         selectDateButton = findViewById(R.id.selectDateButton);
         selectedDateTextView = findViewById(R.id.selectedDateTextView);
         noOfTickets = findViewById(R.id.noOfTickets);
+        startFrom = findViewById(R.id.startFrom);
+        endFrom = findViewById(R.id.endFrom);
 
         // Define the list of items for the spinner
         String[] items = {"Class 1", "Class 2", "Class 3"};
@@ -71,6 +73,8 @@ public class Add_Reservation extends AppCompatActivity {
                 intent.putExtra("date", selectedDateTextView.getText().toString());
                 intent.putExtra("trainClass", selectedClass);
                 intent.putExtra("noOfTickets", noOfTickets.getText().toString());
+                intent.putExtra("startFrom", startFrom.getText().toString());
+                intent.putExtra("endFrom", endFrom.getText().toString());
 
                 // Start the second activity
                 startActivity(intent);

@@ -71,13 +71,35 @@
         app:layout_constraintStart_toStartOf="@+id/selectDateButton"
         app:layout_constraintTop_toBottomOf="@+id/selectDateButton" />
 
+    <EditText
+        android:id="@+id/startFrom"
+        android:layout_width="300sp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:ems="10"
+        android:hint="Enter Start Location"
+        android:inputType="text"
+        app:layout_constraintStart_toStartOf="@+id/noOfTickets"
+        app:layout_constraintTop_toBottomOf="@+id/noOfTickets" />
+
+    <EditText
+        android:id="@+id/endFrom"
+        android:layout_width="300sp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:ems="10"
+        android:hint="Enter End Location"
+        android:inputType="text"
+        app:layout_constraintStart_toStartOf="@+id/startFrom"
+        app:layout_constraintTop_toBottomOf="@+id/startFrom" />
+
     <Spinner
         android:id="@+id/trainClass"
         android:layout_width="300sp"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        app:layout_constraintStart_toStartOf="@+id/noOfTickets"
-        app:layout_constraintTop_toBottomOf="@+id/noOfTickets" />
+        app:layout_constraintStart_toStartOf="@+id/endFrom"
+        app:layout_constraintTop_toBottomOf="@+id/endFrom" />
 
     <Button
         android:id="@+id/setBtn"
